@@ -12,4 +12,4 @@ file-splitter(delimiter="(?<=</record>)")|
 normalize-string |
 substitute-string-pattern(replace="<record>", replacement="<record type=\"Bibliographic\">") |
 encode-kafka-message(status="CREATE") |
-write-kafka-configurable-writer(kafkaTopic="CBSDOCS",bootstrapServers="sb-uka3:9092,sb-uka4:9092,sb-uka5:9092,sb-uka6:9092");
+write-kafka-configurable-writer(kafkaTopic="sb-all",bootstrapServers="sb-uka3:9092,sb-uka4:9092,sb-uka5:9092,sb-uka6:9092");
