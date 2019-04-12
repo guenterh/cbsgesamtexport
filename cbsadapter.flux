@@ -10,6 +10,6 @@ cbs_http|
 cbs-export-source (fileRangePattern="job2r13A[1-164].raw")|
 file-splitter(delimiter="(?<=</record>)")|
 normalize-string |
-substitute-string-pattern(replace="<record>", replacement="<record type=\"Bibliographic\">") |
+substitute-string-pattern(replace="<record>", replacement="<record type=\"Bibliographic\" xmlns=\"http://www.loc.gov/MARC21/slim\">") |
 encode-kafka-message(status="CREATE") |
 write-kafka-configurable-writer(kafkaTopic="sb-all",bootstrapServers="sb-uka3:9092,sb-uka4:9092,sb-uka5:9092,sb-uka6:9092");
