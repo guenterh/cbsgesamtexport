@@ -4,9 +4,10 @@
 
 BASE_DIR="$( cd "$(dirname "$0")" ; pwd -P )"
 
-TARGET_HOST=sb-uwf1.swissbib.unibas.ch
+TARGET_HOST=sb-uwf2.swissbib.unibas.ch
 USER=swissbib
-TARGET_DIR=/swissbib_index/cbsCatcher
+TARGET_DIR=/swissbib_index/apps/cbs
+DATA_DIR=$TARGET_DIR/data
 IMAGETAR=gesamtexport.tar
 IMAGENAME=gesamtexport
 
@@ -18,6 +19,8 @@ docker build -t $IMAGENAME .
 
 echo "save latest image gesamtexport as tar file"
 docker save $IMAGENAME --output $IMAGETAR
+
+ssh $USER@$TARGET_HOST "[ ! -d ${DATA_DIR} ]  &&  mkdir -p ${DATA_DIR}"
 
 echo "cp tar file to target host"
 scp $IMAGETAR $USER@$TARGET_HOST:$TARGET_DIR
