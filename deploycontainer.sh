@@ -15,6 +15,7 @@ cd $BASE_DIR
 
 echo "build latest image gesamtexport"
 
+#docker build --no-cache -t $IMAGENAME .
 docker build -t $IMAGENAME .
 
 echo "save latest image gesamtexport as tar file"
